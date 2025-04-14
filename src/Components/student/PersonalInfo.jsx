@@ -25,18 +25,11 @@ const PersonalInfo = ({ user, onBack }) => {
       >
         Thông Tin Cá Nhân
       </Typography>
-
-      <Typography variant="body1" sx={{ mb: 0.5 }}>
-        Họ và Tên: {user?.name || "Chưa cập nhật"}
-      </Typography>
       <Typography variant="body1" sx={{ mb: 0.5 }}>
         MSSV: {user?.studentId || "Chưa cập nhật"}
       </Typography>
       <Typography variant="body1" sx={{ mb: 0.5 }}>
         Email: {user?.email || "Chưa cập nhật"}
-      </Typography>
-      <Typography variant="body1" sx={{ mb: 0.5 }}>
-        Ngành học: {user?.major || "Chưa cập nhật"}
       </Typography>
 
       <Button
