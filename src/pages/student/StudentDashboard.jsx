@@ -9,10 +9,13 @@ import {
   Avatar,
   useTheme,
   styled,
+  Tooltip,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import HistoryIcon from "@mui/icons-material/History";
+import SchoolIcon from "@mui/icons-material/School";
+import InfoIcon from "@mui/icons-material/Info";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   transition: "all 0.3s ease",
@@ -70,14 +73,25 @@ const StudentDashboard = () => {
           <Avatar
             sx={{
               bgcolor: theme.palette.primary.main,
-              width: 56,
-              height: 56,
+              width: 80,
+              height: 80,
               mb: 2,
               mx: "auto",
+              fontSize: "2rem",
             }}
           >
             {user?.username?.charAt(0).toUpperCase()}
           </Avatar>
+          <Typography
+            variant="h6"
+            sx={{
+              color: theme.palette.text.primary,
+              mb: 1,
+              fontWeight: 600,
+            }}
+          >
+            {user?.username || "Tên người dùng"}
+          </Typography>
           <Typography
             variant="subtitle1"
             sx={{
@@ -91,39 +105,43 @@ const StudentDashboard = () => {
 
         <Grid container spacing={3} sx={{ mt: 2 }}>
           <Grid item xs={12} md={6}>
-            <StyledButton
-              variant="contained"
-              color="primary"
-              startIcon={<QrCodeScannerIcon sx={{ fontSize: 28 }} />}
-              onClick={() => navigate("/student/check-in")}
-              fullWidth
-              sx={{
-                py: 1.5,
-                borderRadius: 2,
-                fontSize: "1 rem",
-              }}
-            >
-              Điểm Danh QR
-            </StyledButton>
+            <Tooltip title="Quét mã QR để điểm danh" arrow>
+              <StyledButton
+                variant="contained"
+                color="primary"
+                startIcon={<QrCodeScannerIcon sx={{ fontSize: 28 }} />}
+                onClick={() => navigate("/student/check-in")}
+                fullWidth
+                sx={{
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontSize: "1rem",
+                }}
+              >
+                Điểm Danh QR
+              </StyledButton>
+            </Tooltip>
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <StyledButton
-              variant="outlined"
-              color="secondary"
-              startIcon={<HistoryIcon sx={{ fontSize: 28 }} />}
-              onClick={() => navigate("/student/attendance-history")}
-              fullWidth
-              sx={{
-                py: 1.5,
-                borderRadius: 2,
-                fontSize: "1 rem",
-                borderWidth: 2,
-                "&:hover": { borderWidth: 2 },
-              }}
-            >
-              Lịch Sử Điểm Danh
-            </StyledButton>
+            <Tooltip title="Xem lịch sử điểm danh của bạn" arrow>
+              <StyledButton
+                variant="outlined"
+                color="secondary"
+                startIcon={<HistoryIcon sx={{ fontSize: 28 }} />}
+                onClick={() => navigate("/student/attendance-history")}
+                fullWidth
+                sx={{
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontSize: "1rem",
+                  borderWidth: 2,
+                  "&:hover": { borderWidth: 2 },
+                }}
+              >
+                Lịch Sử Điểm Danh
+              </StyledButton>
+            </Tooltip>
           </Grid>
         </Grid>
 
@@ -143,7 +161,7 @@ const StudentDashboard = () => {
               mx: "auto",
             }}
           >
-            Chào mừng bạn đến với hệ thống điểm danh thông minh
+            Chào mừng bạn đến với hệ thống điểm danh thông minh. Hãy sử dụng các chức năng để quản lý thông tin của bạn.
           </Typography>
         </Box>
       </Paper>
