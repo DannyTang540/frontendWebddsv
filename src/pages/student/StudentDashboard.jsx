@@ -166,6 +166,7 @@ const StudentDashboard = () => {
                       py: 1.5,
                       borderRadius: 2,
                       fontSize: "1rem",
+                      marginLeft: "25vh",
                     }}
                   >
                     Thông Tin Cá Nhân
